@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         let url = "https://jsonplaceholder.typicode.com/todos/1"
         AF.request(url,
                    method: .get, // 어떤 통신방식을 사용할 지
-                   parameters: nil, // POST에서 자세히 다룰 것
+                   parameters: nil, // 서버로 보낼 parameter를 담는 것(POST)
                    encoding: URLEncoding.default, // URL을 통해 접근할 것이니 URLEncoding
                    headers: ["Content-Type":"application/json", "Accept":"application/json"]) // json 형식으로 받게끔
         .validate(statusCode: 200..<300) // 에러여부
@@ -44,18 +44,22 @@ class ViewController: UIViewController {
             (json) in debugPrint(json)
         } // 정보를 받는 부분
     }
+
     
 //MARK: - POST로 서버에 값을 내보내기 :: 서버에서 이 데이터를 Json 파일에 저장할 수 있음?
 
     func postTest() {
-            let url = "https://ptsv2.com/t/95t57-1656574912/post"
+            let url = "https://ptsv2.com/t/prvrx-1656587086/post"
             var request = URLRequest(url: URL(string: url)!)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.timeoutInterval = 10
             
             // POST 로 보낼 정보
-            let params = ["Test key_1":"Test Value_1", "Test key_2":"Test Value_2"] as Dictionary
+            let params = [
+                "Test key_1": url,
+                "Test key_2": "ss"
+            ]
 
             // httpBody 에 parameters 추가
             do {

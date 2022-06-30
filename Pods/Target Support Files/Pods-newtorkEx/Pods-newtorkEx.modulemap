@@ -1,0 +1,6 @@
+framework module Pods_newtorkEx {
+  umbrella header "Pods-newtorkEx-umbrella.h"
+
+  export *
+  module * { export * }
+}
